@@ -3,9 +3,10 @@ import os
 
 load_dotenv()
 
-class Config(object):
-    SECRET_KEY = 'this-really-needs-to-be-changed'
+class Config(object): 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    DEBUG = False
+    SECRET_KEY = 'your-secret-key'
 
 class LocalConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///local.db'
@@ -23,3 +24,9 @@ class DevelopmentConfig(Config):
     dbname=os.getenv('DBNAME')
     )
     DEBUG = True
+    
+#class ProductionConfig:
+ #   DEBUG = False
+  #  SQLALCHEMY_DATABASE_URI = 'postgresql://gloria:your_password@localhost:5432/your_database'
+  #  SECRET_KEY = 'your-secret-key'
+   
